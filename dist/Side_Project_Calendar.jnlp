@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Side_Project_Calendar.jnlp">
+  <information>
+    <title>Side_Project_Calendar</title>
+    <vendor>zach</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Side_Project_Calendar.jar" size="3498" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Side_Project_Calendar" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="side_project_calendar.Side_Project_Calendar"  name="Side_Project_Calendar" />
+  <update check="always"/>
+</jnlp>
