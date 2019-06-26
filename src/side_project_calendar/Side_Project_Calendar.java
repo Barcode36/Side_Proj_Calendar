@@ -1,8 +1,3 @@
-/*
- * {Westfield State University}:Program Design 2
- * Zachary Hadjah
- * 
- */
 package side_project_calendar;
 
 import javafx.application.Application;

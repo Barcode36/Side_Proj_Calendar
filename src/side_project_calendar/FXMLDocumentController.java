@@ -1,8 +1,3 @@
-/*
- * {Westfield State University}:Program Design 2
- * Zachary Hadjah
- * 
- */
 package side_project_calendar;
 
 import java.net.URL;
@@ -36,6 +31,5 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    
     }    
 }
