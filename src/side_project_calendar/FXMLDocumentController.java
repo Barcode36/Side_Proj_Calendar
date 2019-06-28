@@ -50,7 +50,7 @@ public class FXMLDocumentController implements Initializable {
     
     
     //Creating an observable list to populate comboBox
-    private ObservableList<String> list = FXCollections.observableArrayList("month");
+    private ObservableList<String> list = FXCollections.observableArrayList("month"); //only testing
 
     public ObservableList<String> getList() {
         return list;
