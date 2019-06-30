@@ -47,27 +47,27 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private DatePicker datePicker;
     
-    
-    
-    //Creating an observable list to populate comboBox
-    private ObservableList<String> list = FXCollections.observableArrayList("month"); //only testing
-
-    public ObservableList<String> getList() {
-        return list;
-    }
-
-    public void setList(ObservableList<String> list) {
-        this.list = list;
-    }
-    
-    //populating the comboBox
     @FXML
     private ComboBox chooseMonth;
     
     
     
+    //Creating an observable list to populate comboBox will all months
+    DateFormatSymbols dfs = new DateFormatSymbols();
+    String[] months = dfs.getMonths();
+            
+    public ObservableList<String> list = FXCollections.observableList(Arrays.asList(months)); //only testing
+    public ObservableList<String> getList() {
+        return list;
+    }
+    public void setList(ObservableList<String> list) {
+        this.list = list;
+    }
+
     
-    // individual dates or days (monday - sunday)
+    
+    
+    // individual dates (1 - 31) or days (monday - sunday)
     @FXML
     private Label Label00, Label02, Label03, Label04,Label05,Label10,
             Label11, Label12, Label13, Label14, Label15, Label20, Label21,
@@ -81,8 +81,12 @@ public class FXMLDocumentController implements Initializable {
         chooseMonth.setItems(list);
     }    
 
+    //when a month is chosen from the comboBox, the scene will show that specified month
     @FXML
-    private void loadFebruary(ActionEvent event) throws IOException {   
+    private void loadMonth(ActionEvent event) throws IOException {   
+        
+        
+        
         Parent registerPane = FXMLLoader.load(getClass().getResource("February.fxml"));
         Scene ViewScene = new Scene(registerPane);
 
