@@ -38,54 +38,52 @@ import javafx.stage.Stage;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
-    private Pane top, bottom, leftPane;
+    private Pane topPane, bottomPane;
     
     @FXML
-    private GridPane CalendarPane;
+    private GridPane calendarPane;
+    
+    // individual dates (1 - 31) or days (monday - sunday)
+    @FXML
+    private Label sundayLabel, mondayLabel, tuesdayLabel, wednesdayLabel, thursdayLabel,
+                  fridayLabel, saturdayLabel, Label02, Label03, Label04,Label05, Label11,
+                  Label12, Label13, Label14, Label15,  Label21, Label22, Label23, Label24,
+                  Label25,  Label31, Label32, Label33, Label34, Label35,  Label41, Label42,
+                  Label43, Label44, Label45,  Label51, Label52, Label53, Label54, Label55,
+                  Label61, Label62, Label63, Label64, Label65;
     
     @FXML
-    private Label monthTitle, eventsListLabel, createEventsLabel, createdEventsLabels;
-    
-    @FXML 
-    private TextArea bottomTextArea;
-    
+    private Label monthTitle, datePickerLabel;
+     
     @FXML
     private DatePicker datePicker;
     
     @FXML
-    private ComboBox chooseMonth;
+    private ComboBox comboBox;
     
     
     //Creating an observable list to populate the comboBox with every month
     DateFormatSymbols dfs = new DateFormatSymbols();
-    String[] months = dfs.getMonths();
+    String[] monthsArray = dfs.getMonths();
             
-    public ObservableList<String> list = FXCollections.observableList(Arrays.asList(months)); 
+    public ObservableList<String> list = FXCollections.observableList(Arrays.asList(monthsArray)); 
     public ObservableList<String> getList() {
         return list;
     }
     public void setList(ObservableList<String> list) {
         this.list = list;
     }
-        
-    // individual dates (1 - 31) or days (monday - sunday)
-    @FXML
-    private Label Label00, Label02, Label03, Label04,Label05,Label10,
-            Label11, Label12, Label13, Label14, Label15, Label20, Label21,
-            Label22, Label23, Label24, Label25, Label30, Label31, Label32,
-            Label33, Label34, Label35, Label40, Label41, Label42, Label43,
-            Label44, Label45, Label50, Label51, Label52, Label53, Label54,
-            Label55, Label60, Label61, Label62, Label63, Label64, Label65;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        chooseMonth.setItems(list);
+        comboBox.setItems(list);
     }    
 
     //when a month is chosen from the comboBox, the scene will show that specified month
     @FXML
     private void loadMonth(ActionEvent event) throws IOException {   
-        String chosenMonth = chooseMonth.getValue().toString();
+        String chosenMonth = comboBox.getValue().toString();
         
         Parent chosenMonthPane = FXMLLoader.load(getClass().getResource(chosenMonth + ".fxml"));
         Scene ViewScene = new Scene(chosenMonthPane);
