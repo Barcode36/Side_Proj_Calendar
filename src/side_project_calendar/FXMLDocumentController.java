@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.LoadException;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -55,8 +56,7 @@ public class FXMLDocumentController implements Initializable {
     private ComboBox chooseMonth;
     
     
-    
-    //Creating an observable list to populate comboBox with every months
+    //Creating an observable list to populate the comboBox with every month
     DateFormatSymbols dfs = new DateFormatSymbols();
     String[] months = dfs.getMonths();
             
@@ -67,10 +67,7 @@ public class FXMLDocumentController implements Initializable {
     public void setList(ObservableList<String> list) {
         this.list = list;
     }
-
-    
-    
-    
+        
     // individual dates (1 - 31) or days (monday - sunday)
     @FXML
     private Label Label00, Label02, Label03, Label04,Label05,Label10,
@@ -88,27 +85,13 @@ public class FXMLDocumentController implements Initializable {
     //when a month is chosen from the comboBox, the scene will show that specified month
     @FXML
     private void loadMonth(ActionEvent event) throws IOException {   
-                
-        chooseMonth.valueProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                String chosenMonth = chooseMonth.getValue().toString();
-                try {
-                    Parent chosenMonthPane = FXMLLoader.load(getClass().getResource(chosenMonth + ".fxml"));
-                    Scene ViewScene = new Scene(chosenMonthPane);
-
-                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    window.setScene(ViewScene);
-                    window.show();
-                } catch (IOException ex) {
-                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-
+        String chosenMonth = chooseMonth.getValue().toString();
         
-        //chooseMonth.setOnAction(e -> {          
-           
-       
+        Parent chosenMonthPane = FXMLLoader.load(getClass().getResource(chosenMonth + ".fxml"));
+        Scene ViewScene = new Scene(chosenMonthPane);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(ViewScene);
+        window.show();    
     }
 }
