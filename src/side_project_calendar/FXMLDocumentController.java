@@ -26,6 +26,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -38,17 +39,21 @@ import javafx.stage.Stage;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
-    private Pane topPane, bottomPane;
+    private Pane topPane, bottomPane, holidayVbox, eventsVbox;
+    
+    @FXML
+    private TextField eventDescription;
     
     @FXML
     private GridPane calendarPane;
     
     // individual dates (1 - 31) or days (monday - sunday)
     @FXML
-    private Label sundayLabel, mondayLabel, tuesdayLabel, wednesdayLabel, thursdayLabel,
-                  fridayLabel, saturdayLabel, Label02, Label03, Label04,Label05, Label11,
-                  Label12, Label13, Label14, Label15,  Label21, Label22, Label23, Label24,
-                  Label25,  Label31, Label32, Label33, Label34, Label35,  Label41, Label42,
+    private Label SUNDAY_LABEL, MONDAY_LABEL, TUESDAY_LABEL, WEDNESDAY_LABEL, THURSDAY_LABEL,
+                  FRIDAY_LABEL, SATURDAY_LABEL, HOLIDAY_LABEL, EVENTS_LABEL, EVENTS_DESCRIPTION_LABEL,
+                  Label02, Label03, Label04,Label05, Label11, Label12, Label13, Label14,
+                  Label15,  Label21, Label22, Label23, Label24, Label25,  Label31, Label32,
+                  Label33, Label34, Label35,  Label41, Label42,
                   Label43, Label44, Label45,  Label51, Label52, Label53, Label54, Label55,
                   Label61, Label62, Label63, Label64, Label65;
     
@@ -58,14 +63,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private DatePicker datePicker;
     
+    
+    //Creating an observable list with all 12 months and setting it into the Combobox
     @FXML
-    private ComboBox comboBox;
-    
-    
-    //Creating an observable list to populate the comboBox with every month
+    private ComboBox comboBox; 
     DateFormatSymbols dfs = new DateFormatSymbols();
     String[] monthsArray = dfs.getMonths();
-            
     public ObservableList<String> list = FXCollections.observableList(Arrays.asList(monthsArray)); 
     public ObservableList<String> getList() {
         return list;
@@ -73,7 +76,6 @@ public class FXMLDocumentController implements Initializable {
     public void setList(ObservableList<String> list) {
         this.list = list;
     }
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

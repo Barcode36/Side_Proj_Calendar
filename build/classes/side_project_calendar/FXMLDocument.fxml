@@ -8,11 +8,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="side_project_calendar.FXMLDocumentController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="side_project_calendar.FXMLDocumentController">
    <center>
-      <GridPane fx:id="CalendarPane" gridLinesVisible="true" prefHeight="357.0" prefWidth="569.0" BorderPane.alignment="CENTER">
+      <GridPane fx:id="calendarPane" gridLinesVisible="true" prefHeight="357.0" prefWidth="569.0" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -66,34 +67,56 @@
             <Label fx:id="Label55" GridPane.columnIndex="5" GridPane.rowIndex="5" />
             <Label fx:id="Label64" text="26" GridPane.columnIndex="6" GridPane.rowIndex="4" />
             <Label fx:id="Label65" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-            <Label fx:id="Label60" text="Saturday" GridPane.columnIndex="6" />
-            <Label fx:id="Label50" text="Friday" GridPane.columnIndex="5" />
-            <Label fx:id="Label40" text="Thursday" GridPane.columnIndex="4" />
-            <Label fx:id="Label30" text="Wednesday" GridPane.columnIndex="3" />
-            <Label fx:id="Label20" text="Tuesday" GridPane.columnIndex="2" />
-            <Label fx:id="Label10" text="Monday" GridPane.columnIndex="1" />
-            <Label fx:id="Label00" text="Sunday" />
+            <Label fx:id="SATURDAY_LABEL" text="Saturday" GridPane.columnIndex="6" />
+            <Label fx:id="FRIDAY_LABEL" text="Friday" GridPane.columnIndex="5" />
+            <Label fx:id="THURSDAY_LABEL" text="Thursday" GridPane.columnIndex="4" />
+            <Label fx:id="WEDNESDAY_LABEL" text="Wednesday" GridPane.columnIndex="3" />
+            <Label fx:id="TUESDAY_LABEL" text="Tuesday" GridPane.columnIndex="2" />
+            <Label fx:id="MONDAY_LABEL" text="Monday" GridPane.columnIndex="1" />
+            <Label fx:id="SUNDAY_LABEL" text="Sunday" />
          </children>
       </GridPane>
    </center>
    <top>
-      <Pane fx:id="top" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="topPane" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="monthTitle" layoutX="246.0" layoutY="14.0" prefHeight="99.0" prefWidth="208.0" text="January 2019">
+            <Label fx:id="monthTitle" layoutX="246.0" layoutY="1.0" prefHeight="99.0" prefWidth="208.0" text="January 2019">
                <font>
                   <Font name="Arial Black" size="24.0" />
                </font>
             </Label>
-            <ComboBox fx:id="chooseMonth" layoutX="503.0" layoutY="14.0" onAction="#loadMonth" prefWidth="150.0" promptText="Choose Month" />
+            <ComboBox fx:id="comboBox" layoutX="503.0" layoutY="14.0" onAction="#loadMonth" prefWidth="150.0" promptText="Choose Month" />
          </children>
       </Pane>
    </top>
    <bottom>
-      <Pane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="bottomPane" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="createEventLabel" layoutX="245.0" layoutY="29.0" prefHeight="17.0" prefWidth="72.0" text="Create Event:" />
+            <Label fx:id="datePickerLabel" layoutX="245.0" layoutY="29.0" prefHeight="17.0" prefWidth="72.0" text="Create Event:" />
             <DatePicker fx:id="datePicker" layoutX="317.0" layoutY="25.0" promptText="MM/DD/YYYY" />
          </children>
       </Pane>
    </bottom>
+   <left>
+      <VBox fx:id="holidayPane" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="holidayLabel" text="Holidays">
+               <font>
+                  <Font name="Arial" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox fx:id="eventsVbox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="EVENTS_LABEL" text="Events">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </right>
 </BorderPane>
