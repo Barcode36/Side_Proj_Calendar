@@ -36,37 +36,37 @@ import javafx.stage.Stage;
  *
  * @author zach
  */
-public class FXMLDocumentController implements Initializable {
-    
-    @FXML
-    private Pane topPane, bottomPane, holidayVbox, eventsVbox;
-    
-    @FXML
-    private TextField eventDescription;
-    
-    @FXML
-    private GridPane calendarPane;
-    
-    // individual dates (1 - 31) or days (monday - sunday)
-    @FXML
-    private Label SUNDAY_LABEL, MONDAY_LABEL, TUESDAY_LABEL, WEDNESDAY_LABEL, THURSDAY_LABEL,
-                  FRIDAY_LABEL, SATURDAY_LABEL, HOLIDAY_LABEL, EVENTS_LABEL, EVENTS_DESCRIPTION_LABEL,
-                  Label02, Label03, Label04,Label05, Label11, Label12, Label13, Label14,
-                  Label15,  Label21, Label22, Label23, Label24, Label25,  Label31, Label32,
-                  Label33, Label34, Label35,  Label41, Label42,
-                  Label43, Label44, Label45,  Label51, Label52, Label53, Label54, Label55,
-                  Label61, Label62, Label63, Label64, Label65;
-    
-    @FXML
-    private Label monthTitle, datePickerLabel;
-     
-    @FXML
-    private DatePicker datePicker;
+public class MonthController implements Initializable {
     
     
+    //GUI variables*************************************************************
+        @FXML
+        private Pane topPane, bottomPane, holidayVbox, eventsVbox;
+        @FXML
+        private TextField eventDescription;
+        @FXML
+        private GridPane calendarPane;
+        // individual dates (1 - 31) or days (monday - sunday)
+        @FXML
+        private Label SUNDAY_LABEL, MONDAY_LABEL, TUESDAY_LABEL, WEDNESDAY_LABEL, THURSDAY_LABEL,
+                      FRIDAY_LABEL, SATURDAY_LABEL, HOLIDAY_LABEL, EVENTS_LABEL, EVENTS_DESCRIPTION_LABEL,
+                      Label02, Label03, Label04,Label05, Label11, Label12, Label13, Label14,
+                      Label15,  Label21, Label22, Label23, Label24, Label25,  Label31, Label32,
+                      Label33, Label34, Label35,  Label41, Label42,
+                      Label43, Label44, Label45,  Label51, Label52, Label53, Label54, Label55,
+                      Label61, Label62, Label63, Label64, Label65;
+    
+        @FXML
+        private Label monthTitle, datePickerLabel;
+        @FXML
+        private DatePicker datePicker;
+        @FXML
+        private ComboBox comboBox; 
+    //**************************************************************************
+    
+        
     //Creating an observable list with all 12 months and setting it into the Combobox
-    @FXML
-    private ComboBox comboBox; 
+    
     DateFormatSymbols dfs = new DateFormatSymbols();
     String[] monthsArray = dfs.getMonths();
     public ObservableList<String> list = FXCollections.observableList(Arrays.asList(monthsArray)); 
@@ -93,5 +93,5 @@ public class FXMLDocumentController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(ViewScene);
         window.show();    
-    }
+    }    
 }
