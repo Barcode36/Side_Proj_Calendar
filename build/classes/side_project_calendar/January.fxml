@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="side_project_calendar.FXMLDocumentController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="side_project_calendar.MonthController">
    <center>
       <GridPane fx:id="calendarPane" gridLinesVisible="true" prefHeight="357.0" prefWidth="569.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -79,7 +78,7 @@
       </GridPane>
    </center>
    <top>
-      <Pane fx:id="topPane" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="topPane" prefHeight="100.0" prefWidth="730.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="monthTitle" layoutX="246.0" layoutY="1.0" prefHeight="99.0" prefWidth="208.0" text="January 2019">
                <font>
@@ -90,14 +89,6 @@
          </children>
       </Pane>
    </top>
-   <bottom>
-      <Pane fx:id="bottomPane" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="datePickerLabel" layoutX="245.0" layoutY="29.0" prefHeight="17.0" prefWidth="72.0" text="Create Event:" />
-            <DatePicker fx:id="datePicker" layoutX="317.0" layoutY="25.0" promptText="01/DD/2019" />
-         </children>
-      </Pane>
-   </bottom>
    <left>
       <VBox fx:id="holidayPane" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -106,7 +97,6 @@
                   <Font name="Arial" size="26.0" />
                </font>
             </Label>
-            <ScrollPane prefHeight="332.0" prefWidth="100.0" />
          </children>
       </VBox>
    </left>
@@ -118,7 +108,7 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <ScrollPane prefHeight="334.0" prefWidth="100.0" />
+            <TextArea fx:id="eventsTextArea" prefHeight="434.0" prefWidth="100.0" promptText="Type Events Here . . ." />
          </children>
       </VBox>
    </right>

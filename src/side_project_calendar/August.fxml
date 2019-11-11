@@ -94,7 +94,7 @@
       <Pane fx:id="bottomPane" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="datePickerLabel" layoutX="245.0" layoutY="29.0" prefHeight="17.0" prefWidth="72.0" text="Create Event:" />
-            <DatePicker fx:id="datePicker" layoutX="317.0" layoutY="25.0" promptText="01/DD/2019" />
+            <DatePicker fx:id="datePicker" layoutX="317.0" layoutY="25.0" promptText="MM/DD/YYYY" />
          </children>
       </Pane>
    </bottom>
