@@ -1,6 +1,15 @@
 package side_project_calendar;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.net.URL;
 import static java.nio.file.Files.list;
 import static java.rmi.Naming.list;
@@ -89,7 +98,16 @@ public class MonthController implements Initializable {
     
     //when a month is chosen from the comboBox, the scene will show that specified month
     @FXML
-    private void loadMonth(ActionEvent event) throws IOException {   
+    private void loadMonth(ActionEvent event) throws IOException, FileNotFoundException {
+        
+        //Events are saved to file
+        String userEvents = eventsTextArea.toString();
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+              new FileOutputStream("out.txt"), "utf-8"))) 
+                {
+                    writer.write(userEvents);
+                }
+                
         String chosenMonth = comboBox.getValue().toString();
         
         Parent chosenMonthPane = FXMLLoader.load(getClass().getResource(chosenMonth + ".fxml"));
@@ -101,10 +119,21 @@ public class MonthController implements Initializable {
     }    
     
     
+    
+    
     //when a month is chosen from the comboBox, the loadMonth method will call on the 
     //loadHolidays method
     private void loadHolidays()
     {
+        
+    }
+    
+    private void writeEventsToFile() throws IOException
+    {
+                  
+        
+
+             
         
     }
     

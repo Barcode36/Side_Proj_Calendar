@@ -1,0 +1,1 @@
+TextArea[id=eventsTextArea, styleClass=text-input text-area]
