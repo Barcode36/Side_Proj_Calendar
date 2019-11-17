@@ -117,17 +117,19 @@ public class MonthController implements Initializable {
     @FXML
     private void loadMonth(ActionEvent event) throws IOException, FileNotFoundException {
         
-        //Events from the text area are saved to file
+        //Events from the text area are saved to file***********
+            String userEvents = eventsTextArea.getParagraphs().toString();
+            File file = new File("out.txt");
+            try{
+                PrintWriter output = new PrintWriter(file);
+                output.print(userEvents);
+                output.close();   
+            }
+            catch (IOException ex){
+            }
+        //*******************************************************
         
-        String userEvents = eventsTextArea.getParagraphs().toString();
-        File file = new File("out.txt");
-        try{
-            PrintWriter output = new PrintWriter(file);
-            output.print(userEvents);
-            output.close();   
-        }
-        catch (IOException ex){
-        }
+        
                 
         String chosenMonth = comboBox.getValue().toString();
         
@@ -135,6 +137,7 @@ public class MonthController implements Initializable {
         Scene ViewScene = new Scene(chosenMonthPane);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        loadHolidays(chosenMonth);
         window.setScene(ViewScene);
         window.show();    
     }    
@@ -144,8 +147,9 @@ public class MonthController implements Initializable {
     
     //when a month is chosen from the comboBox, the loadMonth method will call on the 
     //loadHolidays method
-    private void loadHolidays()
+    private void loadHolidays(String chosenMonth)
     {
+        
     }
     
     private void writeEventsToFile() throws IOException
