@@ -16,6 +16,7 @@ import static java.rmi.Naming.list;
 import java.text.DateFormatSymbols;
 import java.util.Arrays;
 import static java.util.Collections.list;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,10 +44,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-/**
- *
- * @author zach
- */
+
 public class MonthController implements Initializable {
     
     
@@ -78,7 +76,10 @@ public class MonthController implements Initializable {
         private ComboBox comboBox;
     //**************************************************************************
     
-        
+    //Holidays put into HashMap  
+    HashMap<String, String> map = new HashMap<String, String>();
+    
+
     //Creating an observable list with all 12 months and setting it into the Combobox
     DateFormatSymbols dfs = new DateFormatSymbols();
     String[] monthsArray = dfs.getMonths();
@@ -93,6 +94,22 @@ public class MonthController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         comboBox.setItems(list);
+        
+        map.put("January", "New Years Day");
+        map.put("January", "Martin Luther King Day");
+        map.put("February", "President's Day");
+        map.put("March", "Martin Luther King");
+        map.put("May", "Mother's Day");
+        map.put("May", "Memorial Day");
+        map.put("June", "Father's Day");
+        map.put("July", "Independance Day");
+        map.put("September", "Labor Day");
+        map.put("October", "Columbus Day");
+        map.put("November", "Veteran's Day");
+        map.put("November", "Thanksgiving Day");
+        map.put("December", "Christmas Eve");
+        map.put("December", "Christmas Day");
+        map.put("December", "New Years Eve");
     }    
 
     
@@ -100,13 +117,17 @@ public class MonthController implements Initializable {
     @FXML
     private void loadMonth(ActionEvent event) throws IOException, FileNotFoundException {
         
-        //Events are saved to file
-        String userEvents = eventsTextArea.toString();
-        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-              new FileOutputStream("out.txt"), "utf-8"))) 
-                {
-                    writer.write(userEvents);
-                }
+        //Events from the text area are saved to file
+        
+        String userEvents = eventsTextArea.getParagraphs().toString();
+        File file = new File("out.txt");
+        try{
+            PrintWriter output = new PrintWriter(file);
+            output.print(userEvents);
+            output.close();   
+        }
+        catch (IOException ex){
+        }
                 
         String chosenMonth = comboBox.getValue().toString();
         
@@ -125,7 +146,6 @@ public class MonthController implements Initializable {
     //loadHolidays method
     private void loadHolidays()
     {
-        
     }
     
     private void writeEventsToFile() throws IOException
